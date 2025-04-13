@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio - Qiimeynta iyo Faa'iidada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .project {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .project h2 {
+      color: #333;
+    }
+    .project p {
+      line-height: 1.6;
+      color: #555;
+    }
+    .profit {
+      font-weight: bold;
+      color: #4CAF50;
+    }
+    .rating {
+      margin-top: 10px;
+    }
+    .rating span {
+      color: #f39c12;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      color: #555;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Portfolio - Qiimeynta iyo Faa'iidada</h1>
+    
+    <!-- Project Input Form -->
+    <form id="projectForm">
+      <div class="form-group">
+        <label for="projectName">Magaca Mashruuca:</label>
+        <input type="text" id="projectName" required>
+      </div>
+      <div class="form-group">
+        <label for="hoursWorked">Maalmaha Shaqada (saacadaha):</label>
+        <input type="number" id="hoursWorked" required>
+      </div>
+      <div class="form-group">
+        <label for="hourlyRate">Qiimaha Saacadda ($):</label>
+        <input type="number" id="hourlyRate" required>
+      </div>
+      <button type="button" onclick="calculateProfit()">Xisaabi Faa'iidada</button>
+    </form>
+
+    <div id="result" style="display:none;">
+      <h2>Faa'iidada Mashruuca</h2>
+      <p id="resultText"></p>
+      <div class="rating">
+        <p><strong>Qiimeynta: </strong><span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> (5/5)</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateProfit() {
+      const projectName = document.getElementById('projectName').value;
+      const hoursWorked = parseFloat(document.getElementById('hoursWorked').value);
+      const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
+
+      if (isNaN(hoursWorked) || isNaN(hourlyRate) || projectName === "") {
+        alert("Fadlan buuxi dhammaan xogta.");
+        return;
+      }
+
+      const profit = hoursWorked * hourlyRate;
+      
+      // Display result
+      const resultText = `Mashruuca: ${projectName} ayaa soo saaray faa'iido dhan $${profit.toFixed(2)}.`;
+      document.getElementById('resultText').innerText = resultText;
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
